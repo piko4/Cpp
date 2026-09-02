@@ -4,7 +4,7 @@ using namespace std;
 
 void display(int warn, int crit, int readings[], int random_count)
 {
-    int normal=0, warning=0, critical=0, shutdown=0;
+    int normal = 0, warning = 0, critical = 0, shutdown = 0;
     for (int i = 0; i < random_count; i++)
     {
         // cout<<" "<<readings[i];
@@ -23,6 +23,12 @@ void display(int warn, int crit, int readings[], int random_count)
 //-------------------------MAIN-------------------------------------------------
 int main(int argc, char const *argv[])
 {
+    if (argc < 2)
+    {
+        cout << "Usage : ./sensor_monitor <warn_threshold> <critical_threshold> <num_readings>" << endl;
+        cout << "Error : Missing arguments." << endl;
+        return 1;
+    }
     srand(time(0));
     int size = stoi(argv[3]);
     int readings[size];
